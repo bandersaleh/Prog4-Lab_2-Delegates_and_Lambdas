@@ -20,6 +20,8 @@ namespace DelegatesAndLambdas
     /// </summary>
     public partial class MainWindow : Window
     {
+        //The 3 C# provided delegates: Action, Predicate , Func
+
         // Action<type> - Delegate with a void return type
         // Predicate<type> - returns bool
         // TResult Func<in T1, out TResult>(T1 value)

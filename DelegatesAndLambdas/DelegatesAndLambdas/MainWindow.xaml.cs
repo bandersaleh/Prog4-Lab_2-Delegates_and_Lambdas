@@ -35,7 +35,7 @@ namespace DelegatesAndLambdas
         public MainWindow()
         {
             InitializeComponent();
-            //DisplayInformation("");
+            DisplayInformation("");
 
 
             // Func Delegate that will hold our math Methods

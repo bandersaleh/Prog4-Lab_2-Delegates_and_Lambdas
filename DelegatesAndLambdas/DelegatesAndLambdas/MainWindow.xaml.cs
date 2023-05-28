@@ -24,18 +24,17 @@ namespace DelegatesAndLambdas
         // Predicate<type> - returns bool
         // TResult Func<in T1, out TResult>(T1 value)
 
-        public delegate double MathDelegate(double num1, double num2);
+        public delegate double MathDelegate(double num1, double num2); 
 
         // What is a method signature
         public delegate double MyMathDelegate(double num1, double num2);
         public MyMathDelegate performMath;
 
 
-
         public MainWindow()
         {
             InitializeComponent();
-            DisplayInformation("");
+            DisplayInformation(""); // runs a method that clears the RichTextBox. 
 
 
             // Func Delegate that will hold our math Methods
@@ -43,7 +42,7 @@ namespace DelegatesAndLambdas
             Func<int, decimal, float> brokenCode = Add;
             Func<string, bool> isItRaining = IsItWetOutSide;
 
-
+            
 
         } // WPF App Main Window()
 
@@ -148,13 +147,28 @@ namespace DelegatesAndLambdas
         }
 
 
-        
-        
+
+
+        // Part 3 - Lambdas and Find / FindAll
+        //Provided Code - Just a method that generates a list of random numbers
+        List<int> RandomNumber(int numberOfNumbers = 100)
+        {
+
+            List<int> temp = new List<int>();
+            Random rand = new Random();
+
+            for (int i = 0; i < numberOfNumbers; i++)
+            {
+                temp.Add(rand.Next(-200, 201);
+            }
+
+            return temp;
+        }
 
 
 
         // Events
-        
+
 
         private void btnEquals_Click(object sender, RoutedEventArgs e)
         {

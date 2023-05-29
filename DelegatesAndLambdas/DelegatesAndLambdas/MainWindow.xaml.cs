@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using System.Xml.Resolvers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -34,16 +36,16 @@ namespace DelegatesAndLambdas
         public MyMathDelegate performMath;
 
 
-        
-
+        //public static List<>
 
 
 
         public MainWindow()
         {
             InitializeComponent();
-            DisplayInformation(""); // runs a method that clears the RichTextBox. 
-            RandomNumber();
+            DisplayInformation(""); // runs a method that clears/newrow the RichTextBox. 
+            RandomNumber(); // runs a method for Part 3
+
 
             // Func Delegate that will hold our math Methods
             Func<double, double, double> mathOperation = Add;
@@ -51,26 +53,8 @@ namespace DelegatesAndLambdas
             Func<string, bool> isItRaining = IsItWetOutSide;
 
 
-            // Lambdas and Find / FindAll
-            //provided code -Just a method that generates a list of random numbers
-            List<int> RandomNumber(int numberOfNumbers = 100)
-            {
-                List<int> temp = new List<int>();
-                Random rand = new Random();
-
-                for (int i = 0; i < numberOfNumbers; i++)
-                {
-                    temp.Add(rand.Next(-200, 201));
-                }
-
-                return temp;
-
-            }
-
-
-
-
-
+            //var numbersAbove50 = temps //list of temp values
+            //    .FindAll( (y) => Y.temp < 50);
 
 
 
@@ -78,11 +62,31 @@ namespace DelegatesAndLambdas
 
 
 
-
         // Methods
+        // Lambdas and Find / FindAll
+        //provided code - Just a method that generates a list of random numbers
+        List<int> RandomNumber(int numberOfNumbers = 10)
+        {
+            List<int> temp = new List<int>();
+            Random rand = new Random();
+
+            for (int i = 0; i < numberOfNumbers; i++)
+            {
+                temp.Add(rand.Next(-200, 201));
+                //rtbDelegate.Text += "Random Child Number Created Test Placeholder" + "\n";
+                rtbDelegate.Text += temp[i].ToString() + "\n"; // Testing that we can display our generated data on the richTextBox if we want
+
+            }
+
+            return temp;
+
+        }
+
+
+
         public void DisplayInformation(string message)
         {
-            rtbDelegate.Text = "";
+            rtbDelegate.Text += "\n";
             rtbDelegate.Text += message;
         }
 
@@ -91,7 +95,7 @@ namespace DelegatesAndLambdas
             rtbDelegate.Text += value + "\n";
         }
 
-        
+
 
         public double Add(double num1, double num2) { return num1 + num2; }
         public double Subtract(double num1, double num2) { return num1 - num2; }
@@ -104,19 +108,19 @@ namespace DelegatesAndLambdas
             return num1 + (float)num2;
         }
 
-
-
-
-
-        public void Part3Lambdas()
+        public MainWindow(Run rtbDelegate, TextBox txtNum1, TextBox txtNum2, Button btnAdd, Button btnDivide, Button btnMulti, Button btnSub, Button btnEquals, bool contentLoaded, MyMathDelegate performMath)
         {
-            
-
+            this.rtbDelegate = rtbDelegate;
+            this.txtNum1 = txtNum1;
+            this.txtNum2 = txtNum2;
+            this.btnAdd = btnAdd;
+            this.btnDivide = btnDivide;
+            this.btnMulti = btnMulti;
+            this.btnSub = btnSub;
+            this.btnEquals = btnEquals;
+            _contentLoaded = contentLoaded;
+            this.performMath = performMath;
         }
-
-
-
-
 
         public bool IsTrue(bool valid)
         {

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DelegatesAndLambdas
 {
@@ -33,20 +34,48 @@ namespace DelegatesAndLambdas
         public MyMathDelegate performMath;
 
 
+        
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();
             DisplayInformation(""); // runs a method that clears the RichTextBox. 
-
+            RandomNumber();
 
             // Func Delegate that will hold our math Methods
             Func<double, double, double> mathOperation = Add;
             Func<int, decimal, float> brokenCode = Add;
             Func<string, bool> isItRaining = IsItWetOutSide;
 
-            
+
+            // Lambdas and Find / FindAll
+            //provided code -Just a method that generates a list of random numbers
+            List<int> RandomNumber(int numberOfNumbers = 100)
+            {
+                List<int> temp = new List<int>();
+                Random rand = new Random();
+
+                for (int i = 0; i < numberOfNumbers; i++)
+                {
+                    temp.Add(rand.Next(-200, 201));
+                }
+
+                return temp;
+
+            }
+
+
+
+
+
+
+
 
         } // WPF App Main Window()
+
 
 
 
@@ -62,6 +91,8 @@ namespace DelegatesAndLambdas
             rtbDelegate.Text += value + "\n";
         }
 
+        
+
         public double Add(double num1, double num2) { return num1 + num2; }
         public double Subtract(double num1, double num2) { return num1 - num2; }
         public double Multiply(double num1, double num2) { return num1 * num2; }
@@ -74,6 +105,14 @@ namespace DelegatesAndLambdas
         }
 
 
+
+
+
+        public void Part3Lambdas()
+        {
+            
+
+        }
 
 
 
@@ -149,23 +188,7 @@ namespace DelegatesAndLambdas
         }
 
 
-
-
-        // Part 3 - Lambdas and Find / FindAll
-        //Provided Code - Just a method that generates a list of random numbers
-        List<int> RandomNumber(int numberOfNumbers = 100)
-        {
-
-            List<int> temp = new List<int>();
-            Random rand = new Random();
-
-            for (int i = 0; i < numberOfNumbers; i++)
-            {
-                temp.Add(rand.Next(-200, 201);
-            }
-
-            return temp;
-        }
+        
 
 
 

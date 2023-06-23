@@ -33,10 +33,8 @@ namespace DelegatesAndLambdas
 
         // What is a method signature
         public delegate double MyMathDelegate(double num1, double num2);
+
         public MyMathDelegate performMath;
-
-
-        //public static List<>
 
 
 
